@@ -9,6 +9,7 @@ export async function POST(req: Request) {
     const result = streamText({
       model: groq("openai/gpt-oss-120b"),
       prompt: prompt,
+      abortSignal: req.signal,
     });
 
     return result.toUIMessageStreamResponse();
